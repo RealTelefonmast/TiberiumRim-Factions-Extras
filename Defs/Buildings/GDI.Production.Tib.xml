@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<TR.TRThingDef ParentName="RefineryBase_TR">
+		<defName>GDI_TiberiumRefinery</defName>
+		<label>tiberium refinery (GDI)</label>
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
+		<size>(5,5)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/Refinery/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5.5,5.5)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Production/Refinery/Icon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>0.85</Flammability>
+		</statBases>
+		<costList>
+			<GDI_ReinforcedPlate>200</GDI_ReinforcedPlate>
+			<ComponentIndustrial>100</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TR.CompProperties_TNSRefinery">
+				<harvester>Harvester_GDI</harvester>
+				<baseCapacity>4000</baseCapacity>
+				<tnwbMode>Producer</tnwbMode>
+			</li>
+			<li Class="TR.CompProperties_MechStation">
+				<mechRecipes>
+					<li>MakeHarvesterCommon</li>
+				</mechRecipes>
+			</li>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Refinery/ContainerOverlay</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5.5,5.5)</drawSize>
+							<drawRotated>false</drawRotated>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Refinery/Connector</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</graphicData>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Refinery/Grid</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</graphicData>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/Refinery/RefConnector</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>(5.5,5.5)</drawSize>
+						</graphicData>
+					</li>
+				</fxLayers>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>TR.ITab_MechConstruction</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>TR.PlaceWorker_Gap</li>
+		</placeWorkers>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<interactionCellIcon>RefineryCell</interactionCellIcon>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+	<TR.TRThingDef ParentName="StationBase_TR">
+		<defName>GDIPowerPlant</defName>
+		<thingClass>Building</thingClass>
+		<label>GDI power plant</label>
+		<description>.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Buildings/GDI/Production/PowerPlant/Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<requisites>
+			<tiberiumResearch>
+				<li>GDIExperimental1</li>
+			</tiberiumResearch>
+		</requisites>
+		<uiIconPath>Buildings/GDI/Production/PowerPlant/Icon</uiIconPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1.0</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(4,4)</size>
+		<costList>
+			<GDI_ReinforcedPlate>25</GDI_ReinforcedPlate>
+			<Plasteel>25</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<comps>
+			<li Class="TeleCore.CompProperties_FX"> 
+				<fxLayers>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/PowerPlant/Container</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</graphicData>
+						<fxMode>Dynamic</fxMode>
+					</li>
+					<li>
+						<skip>true</skip>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/PowerPlant/Core</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+					<li>
+						<graphicData>
+							<texPath>Buildings/GDI/Production/PowerPlant/Display</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<shaderType>MoteGlow</shaderType>
+							<drawSize>(5,5)</drawSize>
+						</graphicData>
+						<needsPower>true</needsPower>
+					</li>
+				</fxLayers>
+				<moteData>
+					<northVec>
+						<li>(0,0,0.75)</li>
+					</northVec>
+					<thrower>
+						<moteDef>TiberiumSmokeMote</moteDef>
+						<speed>1.75</speed>
+						<scale>3~4</scale>
+						<rotation>0~90</rotation>
+						<rotationRate>0.1</rotationRate>
+						<angle>0~50</angle>
+						<burstCount>1</burstCount>
+						<affectedByWind>true</affectedByWind>
+						<moteInterval>25~50</moteInterval>
+					</thrower>
+				</moteData>
+			</li>
+			<li Class="TeleCore.CompProperties_NetworkPowerPlant">
+				<compClass>TR.Comp_NetworkStructurePowerPlant</compClass>
+				<fromNetwork>TiberiumNetwork</fromNetwork>
+				<baseCapacity>2000</baseCapacity>
+				<supportedTypes>
+					<li>Green</li>
+					<li>Blue</li>
+					<li>Red</li>
+				</supportedTypes>
+			    <tnwbMode>Consumer</tnwbMode>
+				<consumeAmt>1000</consumeAmt>
+				<daysPerLoad>7</daysPerLoad>
+			</li>
+			<li Class="CompProperties_Flickable" />	
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>TR.CompPower_Tiberium</compClass>
+				<basePowerConsumption>-4000</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<modExtensions>
+			<li Class="TeleCore.SubMenuExtension">
+				<groupDef>GDI</groupDef>
+				<category>Processing</category>
+			</li>
+		</modExtensions>
+	</TR.TRThingDef>
+	
+</Defs>
