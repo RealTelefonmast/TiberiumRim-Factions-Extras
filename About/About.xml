@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>TiberiumRim Factions - Extensions</name>
-	<packageId>telefonmast.tiberiumrim.factions.extensions</packageId>
+	<name>TiberiumRim Factions - Extras</name>
+	<packageId>telefonmast.tiberiumrim.factions.extras</packageId>
 	<author>Telefonmast, Nephlite</author>
 	<supportedVersions>
 		<li>1.4</li>
